@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: random-number-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: random-number
+  template:
+    metadata:
+      labels:
+        app: random-number
+    spec:
+      containers:
+      - name: random-number
+        image: random-number-app:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+
